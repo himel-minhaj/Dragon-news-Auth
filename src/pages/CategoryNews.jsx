@@ -1,12 +1,11 @@
-import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import NewsCard from "../Components/NewsCard";
 
 const CategoryNews = () => {
   // const params = useParams();
-  const {data:news} = useLoaderData();
+  const { data: news } = useLoaderData();
   // console.log(params);
-  console.log(news);
+  // console.log(news);
   return (
     <div>
       <h1 className="font-bold">Dragon News Home</h1>

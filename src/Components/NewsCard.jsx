@@ -1,19 +1,20 @@
 import React from "react";
 import { FaStar, FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = (props = {}) => {
   // console.log(props);
   const { News } = props || {};
   const {
+    _id,
     title,
     author,
-    published_date,
     rating,
     total_view,
     thumbnail_url,
     details,
   } = News;
-  console.log(published_date);
+  // console.log(author.published_date);
   return (
     <div className="card w-full bg-base-100 shadow-xl mb-5 p-5">
       {/* Author Info */}
@@ -29,7 +30,7 @@ const NewsCard = (props = {}) => {
         </div>
       </div>
 
-        {/* Title */}
+      {/* Title */}
       <div>
         <h2 className="card-title text-xl font-bold p-3">{title}</h2>
       </div>
@@ -44,11 +45,15 @@ const NewsCard = (props = {}) => {
       <div className="card-body">
         {/* Details */}
         <p className="text-sm text-gray-600">
-          {details.length > 100 ? `${details.slice(0, 100)}... ` : details}
+          {/* {details.length > 100 ? `${details.slice(0, 100)}... ` : details} */}
+          {details.slice(0, 100)}...{" "}
+          <Link to={`/news/${_id}`} className="text-primary">
+            Read More
+          </Link>
         </p>
-        <div className="card-actions justify-end">
+        {/* <div className="card-actions justify-end">
           <button className="btn btn-primary">Read More</button>
-        </div>
+        </div> */}
 
         {/* Rating and Views */}
         <div className="flex justify-between items-center mt-4">

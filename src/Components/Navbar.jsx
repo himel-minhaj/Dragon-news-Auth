@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import userIcon from "../assets/user.png";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { user, LogOutUser } = useContext(AuthContext);
+  const { user, LogOutUser,  } = useContext(AuthContext);
   // console.log(user);
   const handleLogOut = () => {
     LogOutUser()
@@ -22,22 +22,26 @@ const Navbar = () => {
     <div className="flex justify-between items-center">
       <div className=""></div>
       <div className="nav flex gap-10 text-base-400">
-        <Link to="/">Home</Link>
-        <Link to="/career">Career</Link>
-        <Link to="/about">About</Link>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/career">Career</NavLink>
+        <NavLink to="/about">About</NavLink>
       </div>
       <div className="LogIn flex gap-3 items-center ">
         {user && user?.email ? (
           <>
-            <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+            <img
+              className="w-10 h-10 rounded-full"
+              src={user?.photoURL}
+              alt=""
+            />
             <p>{user?.displayName}</p>
           </>
         ) : (
           <img src={userIcon} alt="" />
         )}
-        {user && user?.email ? (
+        {user? (
           <>
-            <p>{user.email}</p>
+            <p>{user?.email}</p>
             <button onClick={handleLogOut} className="btn">
               LogOut
             </button>
